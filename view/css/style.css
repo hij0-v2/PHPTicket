@@ -1,0 +1,25 @@
+#containerMessage {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 10px 0px 10px 0px;
+}
+select {
+    margin: 5px 0px 5px 0px;
+}
+#message {
+    width: 250px;
+}
+#fullName {
+    margin-bottom: 5px;
+}
+#inputCost {
+    margin-bottom: 5px;
+}
+#inputID {
+    margin-bottom: 5px;
+}
+
+li {
+    margin: 5px 0px 5px 0px;
+}
