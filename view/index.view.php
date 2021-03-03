@@ -1,4 +1,7 @@
-<link rel="stylesheet" href="view/css/style.css"/>
+<!doctype html>
+<head>
+    <link rel="stylesheet" href="view/css/style.css"/>
+</head>
 <body>
 <div class="container">
     <form method="post">
@@ -15,7 +18,7 @@
         <div class="form-group" id="inputCost">
             <label for="inputCost">Kaina</label>
             <input type="text" class="form-control" id="inputCost" name="inputCost" aria-describedby="costHelp">
-            <small id="costHelp" class="form-text text-muted">€</small>
+            <small id="costHelp" class="form-text text-muted">$</small>
         </div>
         <div class="form-group">
             <select style="width: 200px" class="form-control" name="flyNumber">
@@ -56,16 +59,69 @@
         <button type="submit" class="btn btn-primary" name="send">Spausdinti</button>
     </form>
 </div>
-</body>
 
 <?php
-echo "<div class='listContainer'>";
 if(isset($_POST['send'])):?>
-<ul>
-        <?php foreach($_POST as $label => $item):?>
-           <li><?=$item;?></li>
-        <?php endforeach;?>
-</ul>
-<?php endif;
-echo "</div>";
+<?php
+if(!preg_match('/^([A-Z]+[a-z0-9A-Z)\ .-]{4,25})$/',$_POST['fullName']))
+{
+    $validation[] = "Vardo pirma raide turi buti is didziosios raides";
+}
+if(!preg_match('/^([1-6]+[0-9]{10,12})$/',$_POST['inputID']))
+{
+    $validation[] = "Asmens kodas turi buti valid";
+}
+if(!preg_match('/^([0-9]+[0-9]{1,6})$/',$_POST['inputCost']))
+{
+    $validation[] = "Enter a valid price";
+}
+if(!isset($_POST['flyNumber']))
+{
+    $validation[] = "Nepasirinkote skrydzio numerio";
+}
+if(!isset($_POST['baggage']))
+{
+    $validation[] = "Nepasirinkote bagazo dydzio";
+}
+if(!isset($_POST['from']))
+{
+    $validation[] = "Nepasirinkote is kur skrisite";
+}
+if(!isset($_POST['to']))
+{
+    $validation[] = "Nepasirinkote i kur skrisite";
+}
+if(!preg_match('/[A-Za-z0-9\ \']{10,150}$/',$_POST['message']))
+{
+    $validation[] = "Zinute nuo 10 iki 150 char";
+}
 ?>
+<?php endif;?>
+    <?php if(empty($validation)):?>
+    <?php if($_POST['baggage'] >20):?>
+        <?php $_POST['inputCost']+=30;?>
+<?php endif;?>
+
+<table style="margin-top: 10px">
+    <tr>
+        <td>History</td>
+    </tr>
+    <?php foreach (printData() as $data):?>
+        <tr>
+            <?php $data = explode(',',$data)?>
+            <?php foreach ($data as $arr):?>
+            <td><?=$arr?></td>
+            <?php endforeach?>
+            <td><a id="<?=$data[8]?>" href="ticket.php?id=<?=$data[8]?>">Ticket</a></td>
+        </tr>
+    <?php endforeach?>
+</table>
+    <?php endif;?>
+<?php if(!empty($validation)):?>
+<h2>Ivesti neteisingi duomenys prasome bandyti is naujo.</h2>
+<?php foreach ($validation as $err):?>
+<p><?=$err?></p>
+<?php endforeach;?>
+<?php endif?>
+
+</body>

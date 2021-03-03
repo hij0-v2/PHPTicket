@@ -1,0 +1,90 @@
+.userTicket{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: navajowhite;
+    height: 100px;
+    width: 800px;
+    justify-content: center;
+    align-items: center;
+}
+.name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    width: 400px;
+    height: 50%;
+    font-size: 200%;
+}
+.container{
+    background-color: darksalmon;
+    height: auto;
+    width: 1000px;
+}
+.fromTo{
+    display: flex;
+    border: 2px solid black;
+    height: 200px;
+    width: 80%;
+    background-color: navajowhite;
+}
+.from{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 2px solid black;
+    width: 50%;
+}
+.to{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 2px solid black;
+    width: 50%;
+}
+.text{
+    font-size: 25px;
+}
+.country{
+    font-size: 50px;
+}
+.time{
+    font-size: 30px;
+}
+.id{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 150%;
+    width: 200px;
+    height: 25px;
+    margin-top: 5px;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 305px;
+}
+.notesContainer{
+    width: 190px;
+}
+.notesHeader{
+    font-size: 150%;
+    text-align: center;
+}
+.notes{
+    word-wrap: break-word;
+    font-size: 20px;
+    width: 150px;
+}
+.price{
+    font-size: 150%;
+}
