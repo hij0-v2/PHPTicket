@@ -5,8 +5,6 @@
     background-color: navajowhite;
     height: 100px;
     width: 800px;
-    justify-content: center;
-    align-items: center;
 }
 .name{
     display: flex;
