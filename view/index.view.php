@@ -103,18 +103,21 @@ if(!preg_match('/[A-Za-z0-9\ \']{50,1000}$/',$_POST['message']))
 <?php endif;?>
 
 <table style="margin-top: 10px">
+    <thead>
     <tr>
         <td>History</td>
     </tr>
-    <?php foreach (printData() as $data):?>
+    </thead>
+    <tbody> <?php foreach (printData() as $data):?>
         <tr>
             <?php $data = explode(',',$data)?>
             <?php foreach ($data as $arr):?>
-            <td><?=$arr?></td>
+                <td><?=$arr?></td>
             <?php endforeach?>
             <td><a id="<?=$data[8]?>" href="ticket.php?id=<?=$data[8]?>">Ticket</a></td>
         </tr>
     <?php endforeach?>
+    </tbody>
 </table>
     <?php endif;?>
 <?php if(!empty($validation)):?>
