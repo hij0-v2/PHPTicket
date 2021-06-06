@@ -63,7 +63,7 @@
 <?php
 if(isset($_POST['send'])):?>
 <?php
-if(!preg_match('/^([A-Z]+[a-z0-9A-Z)\ .-]{4,25})$/',$_POST['fullName']))
+if(!preg_match('/^([A-Z]+[a-z0-9A-Z)\ .-]{2,100})$/',$_POST['fullName']))
 {
     $validation[] = "Vardo pirma raide turi buti is didziosios raides";
 }
@@ -91,14 +91,14 @@ if(!isset($_POST['to']))
 {
     $validation[] = "Nepasirinkote i kur skrisite";
 }
-if(!preg_match('/[A-Za-z0-9\ \']{10,150}$/',$_POST['message']))
+if(!preg_match('/[A-Za-z0-9\ \']{50,1000}$/',$_POST['message']))
 {
-    $validation[] = "Zinute nuo 10 iki 150 char";
+    $validation[] = "Zinute nuo 50 iki 1000 char";
 }
 ?>
 <?php endif;?>
     <?php if(empty($validation)):?>
-    <?php if($_POST['baggage'] >20):?>
+    <?php if($_POST['baggage']>20):?>
         <?php $_POST['inputCost']+=30;?>
 <?php endif;?>
 
